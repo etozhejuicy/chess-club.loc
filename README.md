@@ -1,0 +1,2 @@
+# chess-club.loc
+
