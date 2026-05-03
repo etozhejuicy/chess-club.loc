@@ -6,52 +6,125 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	scroll-behavior: smooth;
-	-webkit-overflow-scrolling: touch;
-	overflow-x: hidden;
-	overflow-y: auto;
-	@include webkit_scrollbar;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include webkit_scrollbar;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	margin: 0;
-	font-family: $font-family;
-	font-size: $font-size;
-	background-color: var(--default-body-color);
-	color: var(--default-text-color);
-	overflow-x: clip;
-	-webkit-text-rendering: optimizeLegibility;
-	-moz-text-rendering: optimizeLegibility;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	@include webkit_scrollbar;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: $font-family;
+  font-size: $font-size;
+  background-color: var(--default-body-color);
+  color: var(--default-text-color);
+  overflow-x: clip;
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include webkit_scrollbar;
 }
 
 main {
-	flex: 1;
+  flex: 1;
 }
 
 .logo {
-	display: flex;
-	width: 213px;
-	height: 32px;
+  display: flex;
+  width: 213px;
+  height: 32px;
 
-	@include break-up('lg') {
-		width: 245px;
-		height: 36px;
+  @include break-up("lg") {
+    width: 245px;
+    height: 36px;
+  }
+
+  & * {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: var(--cream);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/bg.webp");
+    background-size: contain;
+    background-repeat: repeat;
+    background-position: bottom center;
+    mix-blend-mode: color-burn;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  & > .container {
+    z-index: 2;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+  }
+
+  &-block {
+    display: grid;
+    grid-template-columns: 1fr;
+	flex: 1;
+    width: 100%;
+    height: 100%;
+
+	@include break-up('md') {
+		grid-template-columns: repeat(2, 1fr);
 	}
 
-	& * {
+	@include break-up('lg') {
+		grid-template-columns: 542px 1fr;
+	}
+  }
+
+  &-figure {
+	position: relative;
+	z-index: 1;
+	aspect-ratio: 16 / 9;
+
+	& > img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
 	}
+  }
+
+  &-main {
+    margin: auto 0;
+  }
+
+  & > .marquee {
+    margin-top: auto;
+  }
 }

@@ -7,6 +7,9 @@
   --btn-background-color: var(--primary);
   --btn-color: var(--white);
   --btn-border-color: var(--primary);
+  --btn-border-width: 2px;
+  --btn-border-style: solid;
+  --btn-border-radius: 1000px;
 
   @include break-up("lg") {
     --btn-padding-y: 20px;
@@ -23,8 +26,8 @@ button {
   justify-content: center;
   padding: var(--btn-padding-y) var(--btn-padding-x);
   color: var(--btn-color);
-  line-height: 1;
-  font-weight: 700;
+  line-height: 130%;
+  font-weight: medium;
   font-family: var(--btn-font-family);
   font-size: var(--btn-font-size);
   text-align: center;
@@ -34,8 +37,8 @@ button {
   touch-action: manipulation;
   user-select: none;
   text-transform: none;
-  border-radius: 100px;
-  border: 1px solid;
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-border-width) var(--btn-border-style);
   border-color: var(--btn-border-color);
   background-color: var(--btn-background-color);
   user-select: none;

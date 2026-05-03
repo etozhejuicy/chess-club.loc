@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <div class="container">
             <div class="header-inner">
                 <a href="./" class="logo">
@@ -18,33 +18,40 @@
             </div>
         </div>
     </header>
+
     <main>
         <section class="hero">
             <div class="container">
                 <div class="hero-block">
-                    <h1>
-                        <span>
-                            Превратите уездный город
-                        </span>
-                        <span>
-                            в столицу
-                        </span>
-                        <span>
-                            земного шара
-                        </span>
-                    </h1>
+                    <div class="hero-main">
+                        <h1>
+                            <span>
+                                Превратите уездный город
+                            </span>
+                            <span>
+                                в столицу
+                            </span>
+                            <span>
+                                земного шара
+                            </span>
+                        </h1>
 
-                    <p class="text-center">
-                        Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам
-                    </p>
+                        <p class="text-center">
+                            Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам
+                        </p>
 
-                    <div class="d-flex flex-row flex-sm-column align-items-center gap-16 gap-sm-14">
-                        <button type="button" class="btn btn-primary">Поддержать шахматную модель</button>
-                        <button type="button" class="btn btn-outline-primary">Подробнее о турнире</button>
+                        <!-- hero actions -->
+                        <div class="d-flex flex-column flex-sm-row flex-md-column flex-xl-row align-items-stretch align-items-sm-center gap-16 gap-sm-14">
+                            <button type="button" class="btn btn-primary flex-1 w-100 w-sm-auto">Поддержать <br class="d-none d-lg-inline">шахматную мысль</button>
+                            <button type="button" class="btn btn-outline-primary flex-1 w-100 w-sm-auto">Подробнее <br class="d-none d-lg-inline">о&nbsp;турнире</button>
+                        </div>
+                    </div>
+
+                    <div class="hero-figure">
+                        <img src="./img/city.webp" alt="Иллюстрация города">
                     </div>
                 </div>
             </div>
-
             <div class="marquee">
                 <div class="marquee-inner">
                     <span>Дело помощи утопающим — дело рук самих утопающих!</span>
@@ -60,8 +67,14 @@
             </div>
         </section>
     </main>
-    <footer>
-        <p>© 2024 Клуб четырех коней</p>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-primary">
+                Все персонажи, события и цитаты являются вымышленными и не принадлежат создателям сайта. С подробностями
+                можно познакомиться в главе XXXIV романа Ильи Ильфа и Евгения Петрова «Двенадцать стульев».
+            </p>
+        </div>
     </footer>
 
     <!-- scripts -->

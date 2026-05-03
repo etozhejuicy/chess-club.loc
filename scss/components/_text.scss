@@ -1,0 +1,127 @@
+h,
+.h {
+	&1 {
+		font-family: 'Merriweather 24pt SemiCondensed';
+		@include h1;
+	}
+
+	&2 {
+		font-family: 'Merriweather 24pt SemiCondensed';
+		@include h2;
+	}
+
+	&3 {
+		font-family: 'Merriweather 24pt SemiCondensed';
+		@include h3;
+	}
+
+	&4 {
+		@include h4;
+	}
+}
+
+// font-weight settings
+.fw {
+	@each $fw, $value in $font-weights {
+		&-#{$fw} {
+			font-weight: $value;
+		}
+	}
+}
+
+// for text-colors
+.text {
+	@each $color, $value in $colors {
+		&-#{$value} {
+			color: $color;
+		}
+	}
+
+	&-left {
+		text-align: left;
+	}
+
+	&-right {
+		text-align: right;
+	}
+
+	&-center {
+		text-align: center;
+	}
+
+	&-uppercase {
+		text-transform: uppercase;
+	}
+
+	&-lowercase {
+		text-transform: lowercase;
+	}
+
+	&-underline {
+		text-decoration: underline;
+
+		&:is(a) {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	&-nowrap {
+		white-space: nowrap;
+	}
+
+	&-decoration {
+		&-none {
+			text-decoration: none !important;
+		}
+	}
+
+	@each $breakpoint, $width in $breakpoints {
+		@if $breakpoint !="xs" {
+			@include breakpoint($breakpoint) {
+				&-#{$breakpoint} {
+					&-left {
+						text-align: left;
+					}
+
+					&-right {
+						text-align: right;
+					}
+
+					&-center {
+						text-align: center;
+					}
+
+					&-uppercase {
+						text-transform: uppercase;
+					}
+
+					&-lowercase {
+						text-transform: lowercase;
+					}
+
+					&-underline {
+						text-decoration: underline;
+
+						&:is(a) {
+							&:hover {
+								text-decoration: none;
+							}
+						}
+					}
+
+					&-nowrap {
+						white-space: nowrap;
+					}
+
+					&-decoration {
+						&-none {
+							text-decoration: none !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

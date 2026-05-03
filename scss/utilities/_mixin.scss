@@ -103,6 +103,7 @@
   font-weight: 500;
   font-size: 36px;
   line-height: 110%;
+  text-transform: uppercase;
 
   @include break-up("lg") {
     font-size: 60px;
@@ -113,6 +114,7 @@
   font-weight: 500;
   font-size: 36px;
   line-height: 120%;
+  text-transform: uppercase;
 
   @include break-up("lg") {
     font-size: 54px;
@@ -123,6 +125,7 @@
   font-weight: 500;
   font-size: 28px;
   line-height: 135%;
+  text-transform: uppercase;
 
   @include break-up("lg") {
     font-size: 36px;
