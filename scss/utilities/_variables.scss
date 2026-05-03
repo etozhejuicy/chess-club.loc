@@ -1,0 +1,84 @@
+@use 'sass:map';
+
+@import "./colors";
+@import "./mixin";
+
+:root {
+	--slides-gap: 10px;
+}
+
+$breakpoints: (
+	"xxl": 1360px,
+	"xl": 1200px,
+	"lg": 992px,
+	"md": 720px,
+	"sm": 576px,
+	"xs": 0,
+);
+
+$gutter: 4;
+$steps-count: 25;
+
+$steps: (
+	auto: auto,
+	0: 0,
+);
+
+@for $i from 1 through $steps-count {
+	$key: $i * $gutter;
+	$value: #{$key}px;
+	$steps: map.merge($steps, ($key: $value));
+}
+
+$rates-gutter: 4;
+$rates-count: 25;
+
+$rates: (
+	auto: auto,
+	fit: fit-content,
+	fill: fill-available,
+	0: 0,
+);
+
+@for $i from 1 through $rates-count {
+	$key: $i * $rates-gutter;
+	$value: $key * 1%;
+	$rates: map.merge($rates, ($key: $value));
+}
+
+$radiuses: (
+	0: 0px,
+	pill: 1000px,
+);
+
+$positions: (
+	absolute: absolute,
+	fixed: fixed,
+	sticky: sticky,
+	relative: relative,
+);
+
+$font-size: 20px;
+
+$font-weights: (
+	"400": 400,
+	"500": 500,
+	"700": 700,
+	"light": 400,
+	"medium": 500,
+	"bold": 700,
+);
+
+$font-family: system-ui,
+	-apple-system,
+	"Segoe UI",
+	Roboto,
+	"Helvetica Neue",
+	"Noto Sans",
+	"Liberation Sans",
+	Arial,
+	sans-serif,
+	"Apple Color Emoji",
+	"Segoe UI Emoji",
+	"Segoe UI Symbol",
+	"Noto Color Emoji";

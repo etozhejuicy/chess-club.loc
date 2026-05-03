@@ -1,0 +1,44 @@
+:root {
+  --marquee-gap: 12px;
+  --marquee-padding: 10px;
+  --marquee-bg-color: var(--red);
+  --marquee-color: var(--white);
+  --marquee-mask: none;
+
+  @include break-up("lg") {
+    --marquee-padding: 18px;
+  }
+}
+
+.marquee {
+  position: relative;
+  z-index: 1;
+  padding: var(--marquee-padding) 0;
+  background-color: var(--marquee-bg-color);
+  color: var(--marquee-color);
+  mask-image: var(--marquee-mask);
+  overflow-x: hidden;
+
+  &-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--marquee-gap);
+
+    & > * {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      white-space: nowrap;
+      color: currentColor;
+
+      &:not(:first-of-type) {
+        &::before {
+          content: "•";
+          padding-right: var(--marquee-gap);
+        }
+      }
+    }
+  }
+}

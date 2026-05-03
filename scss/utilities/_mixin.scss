@@ -1,0 +1,136 @@
+@use "sass:color";
+@use "sass:map";
+
+// breakpoints system
+@mixin breakpoint($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value ==0 {
+      @content;
+    }
+
+    @else {
+      @media (max-width: ($value - 0.02px)) {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @warn "Неизвестный брейкпоинт: #{$breakpoint}";
+  }
+}
+
+@mixin break-up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @if $value ==0 {
+      @content;
+    }
+
+    @else {
+      @media (min-width: ($value)) {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @warn "Неизвестный брейкпоинт: #{$breakpoint}";
+  }
+}
+
+@mixin break-interval($breakpoint1, $breakpoint2) {
+  @if map.has-key($breakpoints, $breakpoint1) and map.has-key($breakpoints, $breakpoint2) {
+    $value1: map.get($breakpoints, $breakpoint1);
+    $value2: map.get($breakpoints, $breakpoint2);
+
+    @if $value1 ==0 {
+      @media (max-width: ($value2 - 0.02px)) {
+        @content;
+      }
+    }
+
+    @else if $value2 ==0 {
+      @warn "Некорректный диапазон: второй брейкпоинт не может быть '0' при заданном первом";
+    }
+
+    @else {
+      @media (min-width: $value1) and (max-width: ($value2 - 0.02px)) {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @if not map.has-key($breakpoints, $breakpoint1) {
+      @warn "Неизвестный брейкпоинт: #{$breakpoint1}";
+    }
+
+    @else {
+      @warn "Неизвестный брейкпоинт: #{$breakpoint2}";
+    }
+  }
+}
+
+// scrollbar
+@mixin webkit_scrollbar {
+  @supports (-moz-appearance: none) {
+    scrollbar-color: var(--primary) var(--light-grey);
+    scrollbar-width: thin;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--light-grey);
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 8px;
+  }
+}
+
+// for all texts
+@mixin h1 {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 110%;
+
+  @include break-up("lg") {
+    font-size: 60px;
+  }
+}
+
+@mixin h2 {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 120%;
+
+  @include break-up("lg") {
+    font-size: 54px;
+  }
+}
+
+@mixin h3 {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 135%;
+
+  @include break-up("lg") {
+    font-size: 36px;
+  }
+}
+
+@mixin h4 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120%;
+}

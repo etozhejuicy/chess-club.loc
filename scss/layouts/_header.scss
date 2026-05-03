@@ -1,0 +1,19 @@
+:root {
+    --header-padding: 18px;
+
+    @include break-up('lg') {
+        --header-padding: 26px;
+    }
+}
+
+.header {
+    position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: var(--header-padding) 0;
+	transition: 0.25s ease-in-out;
+}

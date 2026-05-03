@@ -1,0 +1,27 @@
+:root {
+  --primary: #1f1f1f;
+  --dark: #313131;
+  --secondary: #fbce51;
+  --blue: #3057a2;
+  --white: #ffffff;
+  --light-grey: #d6d6d6;
+  --red: #f54932;
+}
+
+$primary: #1f1f1f;
+$dark: #313131;
+$secondary: #fbce51;
+$blue: #3057a2;
+$white: #ffffff;
+$light-grey: #d6d6d6;
+$red: #f54932;
+
+$colors: (
+  $primary: "primary",
+  $dark: "dark",
+  $secondary: "secondary",
+  $blue: "blue",
+  $white: "white",
+  $light-grey: "light-grey",
+  $red: "red",
+);

@@ -1,0 +1,16 @@
+:root {
+  --container-max-width: 100%;
+  --container-padding: 20px;
+
+  @include break-up("xxl") {
+    --container-max-width: 1220px;
+    --container-padding: 0;
+  }
+}
+
+.container {
+  max-width: var(--container-max-width);
+  width: 100%;
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+}
