@@ -1,0 +1,15 @@
+:root {
+    --footer-padding: 40px;
+    --footer-color: var(--dark);
+    --footer-background-color: var(--cream);
+}
+
+.footer {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0;
+    padding: var(--footer-padding) 0;
+    background-color: var(--cream);
+    color: var(--dark);
+}

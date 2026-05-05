@@ -79,7 +79,7 @@ h,
 
 	@each $breakpoint, $width in $breakpoints {
 		@if $breakpoint !="xs" {
-			@include breakpoint($breakpoint) {
+			@include break-up($breakpoint) {
 				&-#{$breakpoint} {
 					&-left {
 						text-align: left;

@@ -61,12 +61,12 @@ main {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
   width: 100%;
   height: 100%;
   min-height: 100vh;
   min-height: 100svh;
   background-color: var(--cream);
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -87,44 +87,121 @@ main {
 
   & > .container {
     z-index: 2;
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   &-block {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
-	flex: 1;
+    flex: 1;
     width: 100%;
     height: 100%;
+    padding: 68px 0 0;
 
-	@include break-up('md') {
-		grid-template-columns: repeat(2, 1fr);
-	}
+    @include break-up("md") {
+      // grid-template-columns: 1fr 0.5fr;
+    }
 
-	@include break-up('lg') {
-		grid-template-columns: 542px 1fr;
-	}
+    @include break-up("lg") {
+      grid-template-columns: 542px 1fr;
+      padding: 0;
+    }
   }
 
-  &-figure {
-	position: relative;
-	z-index: 1;
-	aspect-ratio: 16 / 9;
+  &-figures {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 252px;
+    z-index: -2;
+    user-select: none;
+    pointer-events: none;
 
-	& > img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
+    @include break-up("md") {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: unset;
+    }
+  }
+
+  &-sun {
+    position: absolute;
+    bottom: 80px;
+    right: 2vw;
+    z-index: -1;
+    width: 292px;
+    height: 292px;
+    object-fit: contain;
+    animation: rotateInfinite 35s linear backwards;
+    transform-origin: center;
+    transform: rotate(0deg);
+
+    @include break-up("md") {
+      bottom: 80px;
+      right: 2vw;
+      width: 320px;
+      height: 320px;
+    }
+
+    @include break-up("lg") {
+      bottom: 80px;
+      right: -50px;
+      width: 560px;
+      height: 560px;
+    }
+
+    @include break-up("xl") {
+      right: 12px;
+      width: 690px;
+      height: 690px;
+    }
+  }
+
+  &-city {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: auto;
+    max-width: 874px;
+    max-height: 252px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    transform: translateX(-70%);
+
+    @include break-up("sm") {
+      transform: translateX(-55%);
+    }
+
+    @include break-up("md") {
+      transform: translateX(-50%);
+    }
+
+    @include break-up("lg") {
+      max-width: 1178px;
+      max-height: 312px;
+      transform: translateX(-50%);
+    }
+
+    @include break-up("xl") {
+      max-width: 1624px;
+      max-height: 452px;
+    }
   }
 
   &-main {
-    margin: auto 0;
-  }
+    @include break-up("lg") {
+      margin: auto 0;
+    }
 
-  & > .marquee {
-    margin-top: auto;
+    & > h1 {
+      & span {
+        display: block;
+      }
+    }
   }
 }

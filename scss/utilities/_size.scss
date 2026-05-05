@@ -7,7 +7,7 @@
 
 	@each $breakpoint, $width in $breakpoints {
 		@if $breakpoint != "xs" {
-			@include breakpoint($breakpoint) {
+			@include break-up($breakpoint) {
 				&-#{$breakpoint} {
 					@each $rate, $value in $rates {
 						&-#{$rate} {
@@ -29,7 +29,7 @@
 
 	@each $breakpoint, $width in $breakpoints {
 		@if $breakpoint != "xs" {
-			@include breakpoint($breakpoint) {
+			@include break-up($breakpoint) {
 				&-#{$breakpoint} {
 					@each $rate, $value in $rates {
 						&-#{$rate} {
@@ -51,7 +51,7 @@
 
 	@each $breakpoint, $height in $breakpoints {
 		@if $breakpoint != "xs" {
-			@include breakpoint($breakpoint) {
+			@include break-up($breakpoint) {
 				&-#{$breakpoint} {
 					@each $rate, $value in $rates {
 						&-#{$rate} {

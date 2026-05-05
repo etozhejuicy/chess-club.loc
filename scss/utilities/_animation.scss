@@ -6,3 +6,9 @@
     transform: translateX(-50%);
   }
 }
+
+@keyframes rotateInfinite {
+  to {
+    transform: rotate(360deg);
+  }
+}

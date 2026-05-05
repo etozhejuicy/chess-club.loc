@@ -1,5 +1,6 @@
 :root {
   --btn-size: 40px;
+  --btn-line-height: 1;
   --btn-padding-y: 18px;
   --btn-padding-x: 20px;
   --btn-font-family: $font-family;
@@ -12,6 +13,7 @@
   --btn-border-radius: 1000px;
 
   @include break-up("lg") {
+    --btn-line-height: 130%;
     --btn-padding-y: 20px;
     --btn-padding-x: 50px;
   }
@@ -25,9 +27,13 @@ button {
   align-items: center;
   justify-content: center;
   padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-border-radius);
+  border: var(--btn-border-width) var(--btn-border-style);
+  border-color: var(--btn-border-color);
+  background-color: var(--btn-background-color);
   color: var(--btn-color);
-  line-height: 130%;
-  font-weight: medium;
+  line-height: var(--btn-line-height);
+  font-weight: 500;
   font-family: var(--btn-font-family);
   font-size: var(--btn-font-size);
   text-align: center;
@@ -37,14 +43,10 @@ button {
   touch-action: manipulation;
   user-select: none;
   text-transform: none;
-  border-radius: var(--btn-border-radius);
-  border: var(--btn-border-width) var(--btn-border-style);
-  border-color: var(--btn-border-color);
-  background-color: var(--btn-background-color);
-  user-select: none;
   transition: 0.25s ease-in-out;
 
   & * {
+    user-select: none;
     pointer-events: none;
   }
 
@@ -142,19 +144,33 @@ button {
     }
 
     &:focus:active,
-    &.focus,
-    &.active {
-      --btn-background-color: var(--secondary);
-      --btn-border-color: var(--secondary);
+    &:focus,
+    &:active {
+      --btn-background-color: color-mix(
+        in srgb,
+        var(--secondary) 70%,
+        var(--primary) 10%
+      );
       --btn-color: var(--primary);
+      --btn-border-color: color-mix(
+        in srgb,
+        var(--secondary) 70%,
+        var(--primary) 10%
+      );
     }
   }
 
   &-outline {
     &-primary {
+      --btn-background-color: var(--white);
+      --btn-color: var(--primary);
+      --btn-border-color: var(--white);
+
+    @include break-up("lg") {
       --btn-background-color: transparent;
       --btn-color: var(--primary);
       --btn-border-color: var(--primary);
+    }
 
       &:hover,
       &.hover {
@@ -164,11 +180,19 @@ button {
       }
 
       &:focus:active,
-      &.focus,
-      &.active {
-        --btn-background-color: var(--primary);
-        --btn-border-color: var(--primary);
-        --btn-color: var(--white);
+      &:focus,
+      &:active {
+        --btn-background-color: color-mix(
+        in srgb,
+        var(--primary) 70%,
+        var(--dark) 10%
+      );
+      --btn-color: var(--white);
+      --btn-border-color: color-mix(
+        in srgb,
+        var(--primary) 70%,
+        var(--dark) 10%
+      );
       }
     }
   }
