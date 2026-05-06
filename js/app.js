@@ -1,16 +1,21 @@
 function Marquee(selector, speed) {
-  const container = document.querySelector(selector);
-  const originalContent = container.innerHTML;
+  const container = typeof selector === 'string'
+    ? document.querySelector(selector)
+    : selector;
 
-  // Дублируем содержимое один раз
+  if (!container) return;
+
+  // Дублируем контент
+  const originalContent = container.innerHTML;
   container.insertAdjacentHTML('beforeend', originalContent);
 
   let position = 0;
   let animationFrameId = null;
-  let isAnimating = true;      // флаг состояния анимации
+  let isAnimating = false;
+  let widthReady = false;
 
   function animate() {
-    if (!isAnimating) return;  // если анимация остановлена – выходим
+    if (!isAnimating) return;
 
     position -= speed;
     const originalWidth = container.scrollWidth / 2;
@@ -24,13 +29,18 @@ function Marquee(selector, speed) {
   }
 
   function start() {
-    if (isAnimating) return;   // уже запущена
+    if (isAnimating) return;
+    // Не запускаем, если ширина ещё не определена
+    if (!widthReady && container.scrollWidth === 0) {
+      waitForWidth();
+      return;
+    }
     isAnimating = true;
     animate();
   }
 
   function stop() {
-    if (!isAnimating) return;  // уже остановлена
+    if (!isAnimating) return;
     isAnimating = false;
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
@@ -38,21 +48,31 @@ function Marquee(selector, speed) {
     }
   }
 
-  // Обработчики наведения
+  // Ждём, пока у контейнера появится ненулевая ширина
+  function waitForWidth() {
+    if (container.scrollWidth > 0) {
+      widthReady = true;
+      start();
+    } else {
+      setTimeout(waitForWidth, 100);
+    }
+  }
+
   container.addEventListener('mouseenter', stop);
   container.addEventListener('mouseleave', start);
 
-  // Обработчик изменения размера окна
   window.addEventListener('resize', () => {
     stop();
-    // Небольшая задержка, чтобы браузер успел пересчитать размеры
-    setTimeout(() => {
-      start();
-    }, 100);
+    // При ресайзе ширина может временно стать 0 – ждём восстановления
+    widthReady = false;
+    setTimeout(() => waitForWidth(), 100);
   });
 
-  // Запускаем анимацию
-  start();
+  // Запускаем процесс: ждём готовности ширины, затем стартуем
+  waitForWidth();
 }
 
-window.addEventListener('load', () => Marquee('.marquee .marquee-inner', 0.6));
+window.addEventListener('load', () => {
+  const marqueeElements = document.querySelectorAll('.marquee .marquee-inner');
+  marqueeElements.forEach((elem) => Marquee(elem, 0.6));
+});
