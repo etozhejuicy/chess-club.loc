@@ -5232,6 +5232,11 @@ main {
     margin: 0 auto;
   }
 }
+@media (min-width: 1200px) {
+  .session-table {
+    width: 100%;
+  }
+}
 
 table {
   display: table;

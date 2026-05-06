@@ -354,6 +354,10 @@ main {
     @include break-interval('md', 'xl') {
       margin: 0 auto;
     }
+
+    @include break-up('xl') {
+      width: 100%;
+    }
   }
 }
 
