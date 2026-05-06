@@ -20,10 +20,9 @@ function Marquee(selector, speed) {
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  // Обработчики событий
   container.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrameId));
   container.addEventListener('mouseleave', animate);
-  
+
   window.addEventListener('resize', () => {
     cancelAnimationFrame(animationFrameId);
     setTimeout(animate, 100);
