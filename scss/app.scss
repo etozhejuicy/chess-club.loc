@@ -39,6 +39,7 @@ main {
   flex: 1;
 }
 
+// logo
 .logo {
   display: flex;
   width: 213px;
@@ -56,6 +57,7 @@ main {
   }
 }
 
+// hero-section
 .hero {
   position: relative;
   z-index: 1;
@@ -68,7 +70,7 @@ main {
   background-color: var(--cream);
   overflow: hidden;
 
-  @include break-up('md') {
+  @include break-up("md") {
     max-height: 760px;
   }
 
@@ -105,10 +107,6 @@ main {
     height: 100%;
     padding: 68px 0 0;
 
-    @include break-up("md") {
-      // grid-template-columns: 1fr 0.5fr;
-    }
-
     @include break-up("lg") {
       grid-template-columns: 542px 1fr;
       padding: 0;
@@ -140,7 +138,7 @@ main {
     width: 292px;
     height: 292px;
     object-fit: contain;
-    animation: rotateInfinite 35s linear backwards;
+    animation: rotateInfinite 35s linear forwards;
     transform-origin: center;
     transform: rotate(0deg);
 
@@ -215,5 +213,88 @@ main {
         }
       }
     }
+  }
+}
+
+// about
+.about {
+  padding: 48px 0;
+
+  @include break-up('xl') {
+    padding: 80px 0;
+  }
+
+  &-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include break-up("xl") {
+      gap: 0;
+    }
+
+    & > span {
+      &:nth-child(1) {
+        order: 1;
+      }
+      &:nth-child(2) {
+        order: 3;
+
+        @include break-up("xl") {
+          order: 2;
+        }
+      }
+    }
+
+    & > img {
+      order: 2;
+      max-width: 394px;
+      max-height: 250px;
+      object-fit: contain;
+
+      @include break-up("xl") {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        order: 3;
+        width: 394px;
+        height: 250px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+// session
+.session {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include break-up('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    max-width: 530px;
+    max-height: 530px;
+    object-fit: contain;
+
+    @include break-up('xl') {
+      width: 530px;
+      height: 530px;
+    }
+  }
+
+  &-block {
+    grid-area: 1 / 2 / 2 / 4;
+    width: 100%;
+  }
+
+  &-table {
+    display: table;
+    table-layout: fixed;
   }
 }
