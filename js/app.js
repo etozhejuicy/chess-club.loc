@@ -7,8 +7,11 @@ function Marquee(selector, speed) {
 
   let position = 0;
   let animationFrameId = null;
+  let isAnimating = true;      // флаг состояния анимации
 
   function animate() {
+    if (!isAnimating) return;  // если анимация остановлена – выходим
+
     position -= speed;
     const originalWidth = container.scrollWidth / 2;
 
@@ -20,16 +23,36 @@ function Marquee(selector, speed) {
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  container.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrameId));
-  container.addEventListener('mouseleave', animate);
+  function start() {
+    if (isAnimating) return;   // уже запущена
+    isAnimating = true;
+    animate();
+  }
 
+  function stop() {
+    if (!isAnimating) return;  // уже остановлена
+    isAnimating = false;
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = null;
+    }
+  }
+
+  // Обработчики наведения
+  container.addEventListener('mouseenter', stop);
+  container.addEventListener('mouseleave', start);
+
+  // Обработчик изменения размера окна
   window.addEventListener('resize', () => {
-    cancelAnimationFrame(animationFrameId);
-    setTimeout(animate, 100);
+    stop();
+    // Небольшая задержка, чтобы браузер успел пересчитать размеры
+    setTimeout(() => {
+      start();
+    }, 100);
   });
 
   // Запускаем анимацию
-  animate();
+  start();
 }
 
 window.addEventListener('load', () => Marquee('.marquee .marquee-inner', 0.6));

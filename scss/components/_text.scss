@@ -20,6 +20,55 @@ h,
 	}
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-block-start: 0;
+	margin-block-end: 1em;
+}
+
+a {
+	color: inherit;
+	text-decoration-skip-ink: none;
+	text-underline-offset: 2px;
+	text-decoration: none;
+	transition: 0.25s ease-in-out;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:not([class]) {
+		color: var(--primary);
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&>i {
+			margin-right: 4px;
+			vertical-align: middle;
+		}
+
+		& svg {
+			display: inline-flex;
+			vertical-align: center;
+			max-width: $font-size;
+			max-height: $font-size;
+			object-fit: contain;
+		}
+	}
+}
+
+.link {
+	color: var(--blue);
+}
+
 // font-weight settings
 .fw {
 	@each $fw, $value in $font-weights {
