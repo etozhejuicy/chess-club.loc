@@ -366,6 +366,7 @@ table {
   table-layout: fixed;
   border-collapse: collapse;
   border: none;
+  color: var(--dark);
 
   & tbody {
     & tr {
@@ -448,6 +449,17 @@ table {
           border: 2px solid var(--cream);
         }
       }
+    }
+  }
+}
+
+// steps
+.steps {
+  &-title {
+    display: inline;
+
+    & a {
+      display: -webkit-inline-box;
     }
   }
 }
