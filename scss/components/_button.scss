@@ -67,9 +67,9 @@ button {
 
   &.disabled,
   &:disabled {
-    --btn-background-color: var(--grey);
+    --btn-background-color: var(--light-grey);
     --btn-color: var(--white);
-    --btn-border-color: var(--grey);
+    --btn-border-color: var(--light-grey);
     cursor: not-allowed;
 
     &:hover,
@@ -78,9 +78,9 @@ button {
     &:focus,
     &.focus,
     &.active {
-      --btn-background-color: var(--grey);
+      --btn-background-color: var(--light-grey);
       --btn-color: var(--white);
-      --btn-border-color: var(--grey);
+      --btn-border-color: var(--light-grey);
     }
   }
 
