@@ -4,7 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Клуб четырех коней</title>
+    <title>«Клуб четырёх коней» — Васюкинский турнир по шахматам 1927</title>
+    <meta name="description"
+        content="Превратите уездный город в столицу! Оплатите взнос на телеграммы для организации Международного васюкинского турнира по шахматам. Лекция, сеанс на 160 досках, этапы преображения Васюков и участники-легенды.">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/favicon-180x180.png">
+
+    <!-- styles -->
     <link rel="stylesheet" href="./dist/css/app.min.css">
 </head>
 
@@ -144,40 +155,56 @@
                 <div class="steps-title">
                     <h2>
                         Этапы преображения <br />
-                        <span>Васюков <br class="d-inline d-lg-none" /> <a href="javascript://" class="link paragraph text-none mt-12 mt-lg-0" title="Посмотреть этапы преображения Васюков">Будущие источники <br
+                        <span>Васюков <br class="d-inline d-lg-none" /> <a href="javascript://"
+                                class="link paragraph text-none mt-12 mt-lg-0"
+                                title="Посмотреть этапы преображения Васюков">Будущие источники <br
                                     class="d-none d-md-inline">обогащения васюкинцев</a></span>
                     </h2>
                 </div>
 
                 <div class="steps-items slider" id="steps-slider" data-slider="steps-slider" data-slider-nav="true"
                     data-slider-pagination="true" data-slider-init-index="0" data-slider-default-view="1"
-                    data-slider-breakpoints='{"0":{"slidesPerView":1},"576":{"slidesPerView":2},"768":{"slidesPerView":3}}'
+                    data-slider-breakpoints='{"576":{"slidesPerView":1},"768":{"slidesPerView":2}, "992":{"slidesPerView":3}}'
                     data-slider-init-breakpoint="1200">
                     <div class="slider-container">
                         <div class="slider-wrapper">
                             <div class="steps-item slide">
-                                Строительство железнодорожной магистрали Москва-Васюки
+                                <div class="steps-item--wrapper">
+                                    Строительство железнодорожной магистрали Москва-Васюки
+                                </div>
+
+                                <div class="steps-item--wrapper">
+                                    Открытие фешенебельной гостиницы «Проходная пешка» и&nbsp;других небоскрёбов
+                                </div>
                             </div>
                             <div class="steps-item slide">
-                                Открытие фешенебельной гостиницы «Проходная пешка» и&nbsp;других небоскрёбов
+                                <div class="steps-item--wrapper">
+                                    Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров: производство
+                                    овощей,
+                                    фруктов, икры, шоколадных конфет
+                                </div>
                             </div>
                             <div class="steps-item slide">
-                                Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров: производство
-                                овощей,
-                                фруктов, икры, шоколадных конфет
+                                <div class="steps-item--wrapper">
+                                    Строительство дворца для&nbsp;турнира
+                                </div>
+
+                                <div class="steps-item--wrapper">
+                                    Размещение гаражей для&nbsp;гостевого автотранспорта
+                                </div>
                             </div>
                             <div class="steps-item slide">
-                                Строительство дворца для&nbsp;турнира
+                                <div class="steps-item--wrapper">
+                                    Постройка сверхмощной радиостанции для&nbsp;передачи всему миру сенсационных
+                                    результатов
+                                </div>
                             </div>
                             <div class="steps-item slide">
-                                Размещение гаражей для&nbsp;гостевого автотранспорта
-                            </div>
-                            <div class="steps-item slide">
-                                Постройка сверхмощной радиостанции для&nbsp;передачи всему миру сенсационных результатов
-                            </div>
-                            <div class="steps-item slide">
-                                Создание аэропорта «Большие Васюки» с&nbsp;регулярным отправлением почтовых самолётов
-                                и&nbsp;дирижаблей во&nbsp;все&nbsp;концы света, включая Лос-Анжелос и&nbsp;Мельбурн
+                                <div class="steps-item--wrapper">
+                                    Создание аэропорта «Большие Васюки» с&nbsp;регулярным отправлением почтовых
+                                    самолётов
+                                    и&nbsp;дирижаблей во&nbsp;все&nbsp;концы света, включая Лос-Анжелос и&nbsp;Мельбурн
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -215,7 +242,7 @@
                 <div class="team-items slider" id="team-slider" data-slider="team-slider" data-slider-nav="true"
                     data-slider-pagination="false" data-slider-counter="true" data-slider-init-index="1"
                     data-slider-default-view="1"
-                    data-slider-breakpoints='{"0":{"slidesPerView":1},"576":{"slidesPerView":2},"768":{"slidesPerView":3}}'>
+                    data-slider-breakpoints='{"576":{"slidesPerView":1},"768":{"slidesPerView":2},"992":{"slidesPerView":3}}'>
 
                     <div class="slider-navigation">
                         <button type="button" class="slider-prev" aria-label="Предыдущий слайд">
@@ -245,7 +272,8 @@
                                 <p>
                                     Чемпион мира по шахматам
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 1">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 1">Подробнее</a>
                             </div>
                             <div class="team-item slide">
                                 <div class="team-picture">
@@ -255,7 +283,8 @@
                                 <p>
                                     Чемпион мира по шахматам
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 2">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 2">Подробнее</a>
                             </div>
                             <div class="team-item slide">
                                 <div class="team-picture">
@@ -265,7 +294,8 @@
                                 <p>
                                     Чемпион мира по шахматам
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 3">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 3">Подробнее</a>
                             </div>
                             <div class="team-item slide">
                                 <div class="team-picture">
@@ -275,7 +305,8 @@
                                 <p>
                                     Чемпион мира по шахматам
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 4">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 4">Подробнее</a>
                             </div>
                             <div class="team-item slide">
                                 <div class="team-picture">
@@ -285,7 +316,8 @@
                                 <p>
                                     Чемпион мира по шахматам
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 5">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 5">Подробнее</a>
                             </div>
                             <div class="team-item slide">
                                 <div class="team-picture">
@@ -295,7 +327,8 @@
                                 <p>
                                     Гроссмейстер
                                 </p>
-                                <a href="javascript://" class="btn btn-sm btn-outline-blue" title="Посмотреть информацию о учатнике 6">Подробнее</a>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue"
+                                    title="Посмотреть информацию о учатнике 6">Подробнее</a>
                             </div>
                         </div>
                     </div>
