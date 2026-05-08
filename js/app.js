@@ -70,6 +70,7 @@ function Marquee(selector, speed) {
   // Запускаем процесс: ждём готовности ширины, затем стартуем
   waitForWidth();
 }
+
 class Slider {
   constructor(element, userOptions = {}) {
     this.el =
@@ -81,12 +82,13 @@ class Slider {
     this.prevBtn = this.el.querySelector(".slider-prev");
     this.nextBtn = this.el.querySelector(".slider-next");
     this.paginationContainer = this.el.querySelector(".slider-pagination");
+    this.counterContainer = this.el.querySelector(".slider-counter"); // Новое
 
     if (!this.wrapper) throw new Error("Отсутствует .slider-wrapper");
     if (!this.container) throw new Error("Отсутствует .slider-container");
 
     this.slides = Array.from(this.wrapper.children).filter(
-      (child) => child.classList && child.classList.contains("steps-item"),
+      (child) => child.classList && child.classList.contains("slide"),
     );
     this.totalSlides = this.slides.length;
 
@@ -101,6 +103,7 @@ class Slider {
     this.initBreakpoint = null;
     this.isNavigationEnabled = true;
     this.isPaginationEnabled = true;
+    this.isCounterEnabled = false; // Новое
     this.startIndex = 0;
 
     // Drag/swipe
@@ -128,6 +131,7 @@ class Slider {
         data.sliderPagination !== undefined
           ? data.sliderPagination === "true"
           : true,
+      counter: data.sliderCounter === "true", // Новое
       initIndex: data.sliderInitIndex ? parseInt(data.sliderInitIndex, 10) : 0,
       defaultSlidesPerView: data.sliderDefaultView
         ? parseInt(data.sliderDefaultView, 10)
@@ -153,6 +157,7 @@ class Slider {
   _applyOptions() {
     this.isNavigationEnabled = this.options.navigation;
     this.isPaginationEnabled = this.options.pagination;
+    this.isCounterEnabled = this.options.counter === true;
     this.startIndex = Math.min(
       Math.max(0, this.options.initIndex),
       this.totalSlides - 1,
@@ -172,9 +177,16 @@ class Slider {
       "data-slider-pagination",
       this.isPaginationEnabled ? "true" : "false",
     );
+    this.el.setAttribute(
+      "data-slider-counter",
+      this.isCounterEnabled ? "true" : "false",
+    );
 
-    if (!this.isPaginationEnabled && this.paginationContainer) {
-      this.paginationContainer.innerHTML = "";
+    // Если включён счётчик – скрываем пагинацию
+    if (this.isCounterEnabled && this.paginationContainer) {
+      this.paginationContainer.style.display = "none";
+    } else if (this.paginationContainer) {
+      this.paginationContainer.style.display = "";
     }
   }
 
@@ -214,7 +226,6 @@ class Slider {
   }
 
   _deactivateSliderMode() {
-    // Удаляем inline-стили, которые мешают гриду
     if (this.container) this.container.style.overflow = "";
     if (this.wrapper) {
       this.wrapper.style.transform = "";
@@ -227,6 +238,7 @@ class Slider {
       this.nextBtn.style.display = "";
     }
     if (this.paginationContainer) this.paginationContainer.style.display = "";
+    if (this.counterContainer) this.counterContainer.style.display = "";
     this.slides.forEach((slide) => {
       slide.style.width = "";
       slide.style.flex = "";
@@ -240,16 +252,24 @@ class Slider {
     if (this.container) this.container.style.overflow = "hidden";
     if (this.wrapper) {
       this.wrapper.style.flexWrap = "nowrap";
-      // gap не трогаем – берётся из CSS
     }
     if (this.prevBtn && this.nextBtn) {
       this.prevBtn.style.display = "";
       this.nextBtn.style.display = "";
     }
-    if (this.paginationContainer && this.isPaginationEnabled) {
+    if (
+      this.paginationContainer &&
+      this.isPaginationEnabled &&
+      !this.isCounterEnabled
+    ) {
       this.paginationContainer.style.display = "";
-    } else if (this.paginationContainer && !this.isPaginationEnabled) {
+    } else if (this.paginationContainer) {
       this.paginationContainer.style.display = "none";
+    }
+    if (this.counterContainer && this.isCounterEnabled) {
+      this.counterContainer.style.display = "";
+    } else if (this.counterContainer) {
+      this.counterContainer.style.display = "none";
     }
 
     this._setDimensions();
@@ -268,11 +288,9 @@ class Slider {
     this._bindDragEvents();
     this.el.setAttribute("data-slider-active", "true");
 
-    this._bindDragEvents();
-    this.el.setAttribute("data-slider-active", "true");
-
-    // ГАРАНТИРУЕМ, что обработчики кнопок навешаны
+    // Гарантируем, что обработчики кнопок навешаны и счётчик обновлён
     this._bindEvents();
+    if (this.isCounterEnabled) this._updateCounter();
   }
 
   _getGap() {
@@ -302,8 +320,12 @@ class Slider {
     });
   }
 
-  // Замените эти два метода в классе Slider
+  // Обновление пагинации (точек) или счётчика
   _updatePagination() {
+    if (this.isCounterEnabled) {
+      this._updateCounter();
+      return;
+    }
     if (
       !this.isSliderActive ||
       !this.isPaginationEnabled ||
@@ -328,7 +350,12 @@ class Slider {
     this._setActiveDot();
   }
 
+  // Обновление активной точки (при пагинации)
   _setActiveDot() {
+    if (this.isCounterEnabled) {
+      this._updateCounter();
+      return;
+    }
     if (
       !this.isSliderActive ||
       !this.isPaginationEnabled ||
@@ -340,6 +367,19 @@ class Slider {
       if (idx === this.currentIndex) dot.classList.add("active");
       else dot.classList.remove("active");
     });
+  }
+
+  // Обновление текстового счётчика
+  _updateCounter() {
+    if (
+      !this.isSliderActive ||
+      !this.isCounterEnabled ||
+      !this.counterContainer
+    )
+      return;
+    const pages = Math.max(1, this.totalSlides - this.slidesPerView + 1);
+    const currentPage = this.currentIndex + 1;
+    this.counterContainer.textContent = `${currentPage} / ${pages}`;
   }
 
   _updateNavigationState() {
@@ -364,7 +404,7 @@ class Slider {
     this.currentIndex = target;
     const offset = -(this.currentIndex * (this.slideWidth + this.gap));
     this.wrapper.style.transform = `translateX(${offset}px)`;
-    this._setActiveDot();
+    this._setActiveDot(); // обновит либо точку, либо счётчик
     this._updateNavigationState();
     if (withEvent) {
       this.el.dispatchEvent(
@@ -475,7 +515,31 @@ class Slider {
 
   _handleResize = () => {
     const w = window.innerWidth;
+    const wasActive = this.isSliderActive;
+
+    // Проверяем, нужно ли изменить состояние (активен/неактивен)
     this._checkActiveStatus(w);
+
+    // Если состояние изменилось с неактивного на активное – выполняем полную переинициализацию
+    if (this.isSliderActive && !wasActive) {
+      // Даём браузеру время завершить перерисовку после смены CSS-классов
+      setTimeout(() => {
+        // Заново определяем количество видимых слайдов
+        this.slidesPerView = this._getSlidesPerViewForWidth(window.innerWidth);
+        this._setDimensions();
+        const maxValid = Math.max(0, this.totalSlides - this.slidesPerView);
+        let corrected = Math.min(this.currentIndex, maxValid);
+        corrected = Math.max(0, corrected);
+        if (corrected !== this.currentIndex) this.currentIndex = corrected;
+        this._goTo(this.currentIndex, false);
+        this._updatePagination(); // пересоздаст пагинацию/счётчик
+        this._updateNavigationState(); // обновит состояние кнопок
+        if (this.isCounterEnabled) this._updateCounter();
+      }, 20);
+      return;
+    }
+
+    // Если слайдер активен – обрабатываем ресайз обычным способом
     if (this.isSliderActive) {
       const newSPV = this._getSlidesPerViewForWidth(w);
       if (newSPV !== this.slidesPerView) {
@@ -492,11 +556,12 @@ class Slider {
         this._goTo(this.currentIndex, false);
       }
       this._updateNavigationState();
+      if (this.isCounterEnabled) this._updateCounter();
     }
   };
 
   _bindEvents() {
-    if (this._eventsBound) return; // уже навешаны
+    if (this._eventsBound) return;
     if (this.prevBtn) {
       this.prevBtn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -531,7 +596,6 @@ class Slider {
       Math.max(0, this.totalSlides - this.slidesPerView),
     );
     this._goTo(this.currentIndex, false);
-    // this._bindEvents();
     setTimeout(() => this._handleResize(), 100);
     if (window.ResizeObserver) {
       this._resizeObserver = new ResizeObserver(() => this._handleResize());
@@ -549,12 +613,14 @@ class Slider {
   }
 }
 
-// Инициализация слайдера для блока .steps-items .slider
+// Инициализация всех слайдеров с классом .slider
 document.addEventListener("DOMContentLoaded", () => {
-  const sliderElement = document.querySelector(".steps-items.slider");
-  if (sliderElement && !sliderElement.sliderInstance) {
-    sliderElement.sliderInstance = new Slider(sliderElement);
-  }
+  const sliderElements = document.querySelectorAll(".slider");
+  sliderElements.forEach((sliderElement) => {
+    if (sliderElement && !sliderElement.sliderInstance) {
+      sliderElement.sliderInstance = new Slider(sliderElement);
+    }
+  });
 });
 
 window.addEventListener("load", () => {

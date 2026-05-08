@@ -89,15 +89,15 @@ button {
     display: none;
   }
 
-  &>i,
-  &>svg {
+  & > i,
+  & > svg {
     vertical-align: text-bottom;
     transition:
       transform 0.25s ease-in-out,
       color 0.05s ease-in-out;
   }
 
-  &>svg {
+  & > svg {
     max-height: 100%;
     object-fit: contain;
   }
@@ -110,28 +110,10 @@ button {
     height: var(--btn-size);
   }
 
-  &-close {
-
-    &>i,
-    &>svg {
-      transform: rotate(0deg);
-    }
-
-    &:hover {
-
-      &>i,
-      &>svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
-
-  &-burger {
-
-    & i,
-    & svg {
-      display: flex;
-    }
+  &-sm {
+    --btn-padding-x: 12px;
+    --btn-padding-y: 12px;
+    --btn-line-height: 0.7;
   }
 
   &-primary {
@@ -149,13 +131,17 @@ button {
     &:focus:active,
     &:focus,
     &:active {
-      --btn-background-color: color-mix(in srgb,
-          var(--secondary) 70%,
-          var(--primary) 10%);
+      --btn-background-color: color-mix(
+        in srgb,
+        var(--secondary) 70%,
+        var(--primary) 10%
+      );
       --btn-color: var(--primary);
-      --btn-border-color: color-mix(in srgb,
-          var(--secondary) 70%,
-          var(--primary) 10%);
+      --btn-border-color: color-mix(
+        in srgb,
+        var(--secondary) 70%,
+        var(--primary) 10%
+      );
     }
   }
 
@@ -181,13 +167,46 @@ button {
       &:focus:active,
       &:focus,
       &:active {
-        --btn-background-color: color-mix(in srgb,
-            var(--primary) 70%,
-            var(--dark) 10%);
+        --btn-background-color: color-mix(
+          in srgb,
+          var(--primary) 70%,
+          var(--dark) 10%
+        );
         --btn-color: var(--white);
-        --btn-border-color: color-mix(in srgb,
-            var(--primary) 70%,
-            var(--dark) 10%);
+        --btn-border-color: color-mix(
+          in srgb,
+          var(--primary) 70%,
+          var(--dark) 10%
+        );
+      }
+    }
+
+    &-blue {
+      --btn-background-color: var(--white);
+      --btn-color: var(--blue);
+      --btn-border-color: var(--blue);
+
+      &:hover,
+      &.hover {
+        --btn-background-color: var(--blue);
+        --btn-border-color: var(--blue);
+        --btn-color: var(--white);
+      }
+
+      &:focus:active,
+      &:focus,
+      &:active {
+        --btn-background-color: color-mix(
+          in srgb,
+          var(--blue) 70%,
+          var(--dark) 10%
+        );
+        --btn-color: var(--white);
+        --btn-border-color: color-mix(
+          in srgb,
+          var(--blue) 70%,
+          var(--dark) 10%
+        );
       }
     }
   }

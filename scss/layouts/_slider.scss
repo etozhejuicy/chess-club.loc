@@ -31,14 +31,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
     margin-top: 32px;
     padding: 0 16px;
   }
   &-prev,
   &-next {
     --btn-background-color: var(--dark);
-    --btn-border-color: 1px solid var(--dark);
+    --btn-border-color: var(--dark);
     --btn-color: var(--white);
     border-radius: 100%;
     display: flex;
@@ -47,7 +47,6 @@
     width: 36px;
     height: 36px;
     padding: 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: 0.2s;
 

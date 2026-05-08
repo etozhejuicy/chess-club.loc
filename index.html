@@ -46,7 +46,7 @@
 
                         <!-- hero actions -->
                         <div
-                            class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-16 gap-sm-14 mw-100 mw-sm-80 mw-lg-100">
+                            class="d-flex flex-column flex-sm-row flex-md-column flex-lg-row align-items-stretch align-items-sm-center align-items-md-start align-items-lg-center gap-16 gap-sm-14 mw-100 mw-sm-80 mw-lg-100">
                             <button type="button" class="btn btn-primary flex-1 w-100 w-sm-auto">Поддержать <br
                                     class="d-none d-lg-inline">шахматную мысль</button>
                             <button type="button" class="btn btn-outline-primary flex-1 w-100 w-sm-auto">Подробнее <br
@@ -144,14 +144,14 @@
                 <div class="steps-title">
                     <h2>
                         Этапы преображения <br />
-                        <span>Васюков <a href="javascript://" class="link paragraph text-none">Будущие источники <br
+                        <span>Васюков <br class="d-inline d-lg-none" /> <a href="javascript://" class="link paragraph text-none mt-12 mt-lg-0">Будущие источники <br
                                     class="d-none d-md-inline">обогащения васюкинцев</a></span>
                     </h2>
                 </div>
 
                 <div class="steps-items slider" id="steps-slider" data-slider="steps-slider" data-slider-nav="true"
                     data-slider-pagination="true" data-slider-init-index="0" data-slider-default-view="1"
-                    data-slider-breakpoints='{"640":{"slidesPerView":2},"768":{"slidesPerView":2}}'
+                    data-slider-breakpoints='{"0":{"slidesPerView":1},"576":{"slidesPerView":2},"768":{"slidesPerView":3}}'
                     data-slider-init-breakpoint="1200">
                     <div class="slider-container">
                         <div class="slider-wrapper">
@@ -211,6 +211,95 @@
                 <h2>
                     Участники турнира
                 </h2>
+
+                <div class="team-items slider" id="team-slider" data-slider="team-slider" data-slider-nav="true"
+                    data-slider-pagination="false" data-slider-counter="true" data-slider-init-index="1"
+                    data-slider-default-view="1"
+                    data-slider-breakpoints='{"0":{"slidesPerView":1},"576":{"slidesPerView":2},"768":{"slidesPerView":3}}'>
+
+                    <div class="slider-navigation">
+                        <button type="button" class="slider-prev" aria-label="Предыдущий слайд">
+                            <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.87572 18.3373L1.41419 9.87574L9.87572 1.41421" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="square" />
+                            </svg>
+                        </button>
+                        <div class="slider-counter"></div>
+                        <button type="button" class="slider-next" aria-label="Следующий слайд">
+                            <svg width="12" height="20" viewBox="0 0 12 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.41419 1.41421L9.87573 9.87575L1.41419 18.3373" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="square" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="slider-container">
+                        <div class="slider-wrapper">
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 1" />
+                                </div>
+                                <b class="h4">Хозе-Рауль Капабланка</b>
+                                <p>
+                                    Чемпион мира по шахматам
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 2" />
+                                </div>
+                                <b class="h4">Эммануил Ласкер</b>
+                                <p>
+                                    Чемпион мира по шахматам
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 3" />
+                                </div>
+                                <b class="h4">Александр Алехин</b>
+                                <p>
+                                    Чемпион мира по шахматам
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 4" />
+                                </div>
+                                <b class="h4">Арон Нимцович</b>
+                                <p>
+                                    Чемпион мира по шахматам
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 5" />
+                                </div>
+                                <b class="h4">Рихард Рети</b>
+                                <p>
+                                    Чемпион мира по шахматам
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                            <div class="team-item slide">
+                                <div class="team-picture">
+                                    <img src="/img/team.webp" alt="Иллюстрация участника 6" />
+                                </div>
+                                <b class="h4">Остап Бендер</b>
+                                <p>
+                                    Гроссмейстер
+                                </p>
+                                <a href="javascript://" class="btn btn-sm btn-outline-blue">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
