@@ -9303,11 +9303,16 @@ table tbody tr td {
 .steps-item {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
+}
+@media (max-width: 1199.98px) {
+  .steps-item {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 @media (min-width: 1200px) {
   .steps-item {
+    display: flex;
     flex-direction: row;
     gap: 20px;
   }
@@ -9322,6 +9327,7 @@ table tbody tr td {
   height: 100%;
   padding: 20px;
   background-color: var(--cream);
+  font-size: 20px;
   color: var(--dark);
   overflow: hidden;
 }
