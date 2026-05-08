@@ -8129,9 +8129,8 @@ button.hover {
   --btn-border-color: var(--secondary);
   --btn-color: var(--white);
 }
-.btn:focus:active, .btn.focus, .btn.active,
-button:focus:active,
-button.focus,
+.btn:active:focus-visible, .btn.active,
+button:active:focus-visible,
 button.active {
   --btn-background-color: var(--secondary);
   --btn-border-color: var(--secondary);
@@ -8205,10 +8204,9 @@ button-primary.hover {
   --btn-border-color: var(--secondary);
   --btn-color: var(--primary);
 }
-.btn-primary:focus:active, .btn-primary:focus, .btn-primary:active,
-button-primary:focus:active,
-button-primary:focus,
-button-primary:active {
+.btn-primary:active:focus-visible, .btn-primary.active,
+button-primary:active:focus-visible,
+button-primary.active {
   --btn-background-color: color-mix(
     in srgb,
     var(--secondary) 70%,
@@ -8242,10 +8240,9 @@ button-outline-primary.hover {
   --btn-border-color: var(--primary);
   --btn-color: var(--white);
 }
-.btn-outline-primary:focus:active, .btn-outline-primary:focus, .btn-outline-primary:active,
-button-outline-primary:focus:active,
-button-outline-primary:focus,
-button-outline-primary:active {
+.btn-outline-primary:active:focus-visible, .btn-outline-primary.active,
+button-outline-primary:active:focus-visible,
+button-outline-primary.active {
   --btn-background-color: color-mix(
     in srgb,
     var(--primary) 70%,
@@ -8271,10 +8268,9 @@ button-outline-blue.hover {
   --btn-border-color: var(--blue);
   --btn-color: var(--white);
 }
-.btn-outline-blue:focus:active, .btn-outline-blue:focus, .btn-outline-blue:active,
-button-outline-blue:focus:active,
-button-outline-blue:focus,
-button-outline-blue:active {
+.btn-outline-blue:active:focus-visible, .btn-outline-blue.active,
+button-outline-blue:active:focus-visible,
+button-outline-blue.active {
   --btn-background-color: color-mix(
     in srgb,
     var(--blue) 70%,

@@ -57,8 +57,7 @@ button {
     --btn-color: var(--white);
   }
 
-  &:focus:active,
-  &.focus,
+  &:active:focus-visible,
   &.active {
     --btn-background-color: var(--secondary);
     --btn-border-color: var(--secondary);
@@ -128,9 +127,8 @@ button {
       --btn-color: var(--primary);
     }
 
-    &:focus:active,
-    &:focus,
-    &:active {
+    &:active:focus-visible,
+    &.active {
       --btn-background-color: color-mix(
         in srgb,
         var(--secondary) 70%,
@@ -164,9 +162,8 @@ button {
         --btn-color: var(--white);
       }
 
-      &:focus:active,
-      &:focus,
-      &:active {
+      &:active:focus-visible,
+      &.active {
         --btn-background-color: color-mix(
           in srgb,
           var(--primary) 70%,
@@ -193,9 +190,8 @@ button {
         --btn-color: var(--white);
       }
 
-      &:focus:active,
-      &:focus,
-      &:active {
+      &:active:focus-visible,
+      &.active {
         --btn-background-color: color-mix(
           in srgb,
           var(--blue) 70%,
