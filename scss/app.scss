@@ -292,7 +292,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   margin-top: 20px;
 
   @include break-up("lg") {
@@ -310,7 +309,6 @@ section {
     width: 100%;
     height: 100%;
     max-width: 530px;
-    max-height: 530px;
 
     @include break-up("xl") {
       grid-area: 1 / 1 / 2 / 6;

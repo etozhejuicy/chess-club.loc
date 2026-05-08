@@ -9117,7 +9117,6 @@ section:not(.hero, .about) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   margin-top: 20px;
 }
 @media (min-width: 992px) {
@@ -9137,7 +9136,6 @@ section:not(.hero, .about) {
   width: 100%;
   height: 100%;
   max-width: 530px;
-  max-height: 530px;
 }
 @media (min-width: 1200px) {
   .session-image {
