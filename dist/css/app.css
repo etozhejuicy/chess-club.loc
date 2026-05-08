@@ -8905,14 +8905,15 @@ section:not(.hero, .about) {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100%;
   background-color: var(--cream);
   overflow: hidden;
 }
 @media (min-width: 720px) {
   .hero {
+    height: 100%;
+    height: 100vh;
+    height: 100svh;
     max-height: 760px;
   }
 }
